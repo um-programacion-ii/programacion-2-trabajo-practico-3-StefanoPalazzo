@@ -41,5 +41,18 @@ public class CatalogoTest {
         assertEquals(4, catalogo.obtenerLibros().size());
     }
 
+    @Test
+    void testLibrosDisponibles()  {
+        assertEquals(2, catalogo.obtenerLibrosDisponibles().size());
+        Libro libro3 = new Libro("Principito", "Antoine de Saint-Exupéry", "978-3-16-148410-0");;
+        catalogo.agregarLibro(libro3);
+        assertEquals(3, catalogo.obtenerLibrosDisponibles().size());
+        libro3.setEstado(com.biblioteca.models.Estado.PRESTADO);
+        assertEquals(2, catalogo.obtenerLibrosDisponibles().size());
+
+
+    }
+
+
 
 }
