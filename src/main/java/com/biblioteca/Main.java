@@ -1,5 +1,7 @@
-import models.Estado;
-import models.Libro;
+package com.biblioteca;
+
+import com.biblioteca.models.Estado;
+import com.biblioteca.models.Libro;
 
 public class Main {
     public static void main(String[] args) {
