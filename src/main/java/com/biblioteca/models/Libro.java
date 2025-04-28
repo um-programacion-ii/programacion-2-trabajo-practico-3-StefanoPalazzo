@@ -1,5 +1,4 @@
-package models;
-import models.Estado;
+package com.biblioteca.models;
 
 public class Libro {
     private String titulo;
