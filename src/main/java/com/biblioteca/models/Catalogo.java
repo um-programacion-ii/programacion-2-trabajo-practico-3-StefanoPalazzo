@@ -10,6 +10,8 @@ public class Catalogo {
     public Catalogo(ArrayList<Libro> libros) {
         Catalogo.libros = libros;
     }
+
+
     public static ArrayList<Libro> obtenerLibros() {
         return libros;
     }
