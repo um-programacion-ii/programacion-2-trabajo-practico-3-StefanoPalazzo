@@ -1,6 +1,10 @@
-package com.biblioteca.models;
+package com.biblioteca.services;
 
-import java.time.LocalDate;
+import com.biblioteca.models.Catalogo;
+import com.biblioteca.models.Estado;
+import com.biblioteca.models.Libro;
+import com.biblioteca.models.Prestamo;
+
 import java.util.ArrayList;
 import java.util.List;
 
