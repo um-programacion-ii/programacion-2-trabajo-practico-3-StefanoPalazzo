@@ -3,27 +3,27 @@ package com.biblioteca.models;
 import java.util.ArrayList;
 
 public class Catalogo {
-    private static ArrayList<Libro> libros;
+    private ArrayList<Libro> libros;
     public Catalogo() {
-        libros = new ArrayList<Libro>();
+        this.libros = new ArrayList<>();
     }
     public Catalogo(ArrayList<Libro> libros) {
-        Catalogo.libros = libros;
+        this.libros = libros;
     }
 
 
-    public static ArrayList<Libro> obtenerLibros() {
-        return libros;
+    public ArrayList<Libro> obtenerLibros() {
+        return this.libros;
     }
-    public static void ponerLibros(ArrayList<Libro> libros) {
-        Catalogo.libros = libros;
+    public void ponerLibros(ArrayList<Libro> libros) {
+        this.libros = libros;
     }
-    public static void agregarLibro(Libro libro) {
-        libros.add(libro);
+    public void agregarLibro(Libro libro) {
+        this.libros.add(libro);
     }
 
-    public static Libro buscarPorIsbn(String isbn) {
-        for (Libro libro : libros) {
+    public Libro buscarPorIsbn(String isbn) {
+        for (Libro libro : this.libros) {
             if (libro.getIsbn().equals(isbn)) {
                 System.out.println("Libro encontrado: " + libro.getTitulo());
                 return libro;
@@ -33,9 +33,9 @@ public class Catalogo {
         return null;
     }
 
-    public static ArrayList<Libro> obtenerLibrosDisponibles() {
+    public  ArrayList<Libro> obtenerLibrosDisponibles() {
         ArrayList<Libro> librosDisponibles = new ArrayList<>();
-        for (Libro libro : libros) {
+        for (Libro libro : this.libros) {
             if (libro.getEstado() == Estado.DISPONIBLE) {
                 librosDisponibles.add(libro);
             }
