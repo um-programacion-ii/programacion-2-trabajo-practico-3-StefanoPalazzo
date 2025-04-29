@@ -23,6 +23,7 @@ public class SistemaPrestamos {
         libro.setEstado(Estado.PRESTADO);
         Prestamo prestamo = new Prestamo(libro, usuarioId);
         registrarPrestamo(prestamo);
+
         return prestamo;
     }
 
