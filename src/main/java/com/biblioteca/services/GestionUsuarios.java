@@ -1,5 +1,8 @@
-package com.biblioteca.models;
+package com.biblioteca.services;
 
+import com.biblioteca.models.Catalogo;
+import com.biblioteca.models.Prestamo;
+import com.biblioteca.models.Usuario;
 import com.biblioteca.services.SistemaPrestamos;
 
 import java.util.HashMap;
@@ -33,7 +36,7 @@ public class GestionUsuarios {
             throw new IllegalArgumentException("Usuario no registrado.");
         }
 
-        Prestamo prestamo = sistemaPrestamos.prestarLibro(isbn, String.valueOf(dni));
+        Prestamo prestamo = sistemaPrestamos.prestarLibro(isbn);
         if (prestamo == null) {
             throw new IllegalStateException("No se pudo realizar el préstamo.");
         }

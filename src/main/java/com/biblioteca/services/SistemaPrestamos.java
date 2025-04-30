@@ -17,15 +17,17 @@ public class SistemaPrestamos {
         this.catalogo = catalogo;
     }
 
-    public Prestamo prestarLibro(String isbn, String usuarioId) {
+    public Prestamo prestarLibro(String isbn) {
         Libro libro = catalogo.buscarPorIsbn(isbn);
-        if (libro == null || libro.getEstado() == Estado.PRESTADO) {
-            System.out.println("El libro no está disponible para préstamo.");
-            return null;
+        if (libro == null) {
+            throw new IllegalArgumentException("El libro no existe.");
+        }
+        if (libro.getEstado() != Estado.DISPONIBLE) {
+            throw new IllegalStateException("El libro ya está prestado.");
         }
 
         libro.setEstado(Estado.PRESTADO);
-        Prestamo prestamo = new Prestamo(libro, usuarioId);
+        Prestamo prestamo = new Prestamo(libro);
         registrarPrestamo(prestamo);
 
         return prestamo;
@@ -39,11 +41,6 @@ public class SistemaPrestamos {
         return prestamos;
     }
 
-    public boolean estaPrestado(String isbn) {
-        return prestamos.stream()
-                .anyMatch(p -> p.getLibro().getIsbn().equals(isbn));
-    }
-
     public void devolverLibro(String isbn) {
         for (Prestamo prestamo : prestamos) {
             if (prestamo.getLibro().getIsbn().equals(isbn)) {
@@ -53,6 +50,6 @@ public class SistemaPrestamos {
                 return;
             }
         }
-        System.out.println("No se encontró el libro en los préstamos.");
+        throw new IllegalArgumentException("El libro no está prestado.");
     }
 }
