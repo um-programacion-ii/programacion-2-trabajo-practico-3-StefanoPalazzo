@@ -7,11 +7,10 @@ public class Prestamo {
     private LocalDate fechaDevolucion;
     private String usuario;
 
-    public Prestamo(Libro libro, String usuario) {
+    public Prestamo(Libro libro) {
         this.libro = libro;
         this.fechaPrestamo = LocalDate.now();
         this.fechaDevolucion = LocalDate.now().plusDays(7);
-        this.usuario = usuario;
     }
 
     public Libro getLibro() {
